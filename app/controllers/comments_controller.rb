@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
-
+  # words adfaskfhryubq3ouyifhqeofuyh
   # GET /comments or /comments.json
   def index
     @comments = Comment.all
@@ -11,13 +11,16 @@ class CommentsController < ApplicationController
   end
 
   # GET /comments/new
+  def edit
+    #test change
+  end
+
   def new
     @comment = Comment.new
   end
 
   # GET /comments/1/edit
-  def edit
-  end
+  
 
   # POST /comments or /comments.json
   def create
