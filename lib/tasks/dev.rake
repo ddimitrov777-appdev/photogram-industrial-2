@@ -34,30 +34,22 @@ task sample_data: :environment do
 
   users = User.all
 
-  users.each |first_user| do
+  users.each do |first_user|
+    users.each do |second_user|
+      if rand < 0.75
+        first_user.sent_follow_requests.create(
+          recipient: second_user,
+          status: FollowRequest.statuses.values.sample
+        )
+      end
 
-
-    users.each |second_user| do
-        if rand <0.75
-            first_user.sent_follow_requests.create(
-              recipient: second_user,
-              #status: ["pending","accepted","rejected"].sample
-              staus: FollowRequest.statuses.values.sample
-            )
-        end
-
-
-         if rand <0.75
-            second_user.sent_follow_requests.create(
-              recipient: first_user,
-              #status: ["pending","accepted","rejected"].sample
-              staus: FollowRequest.statuses.values.sample
-            )
-        end
-        
+      if rand < 0.75
+        second_user.sent_follow_requests.create(
+          recipient: first_user,
+          status: FollowRequest.statuses.values.sample
+        )
+      end
     end
-
-
   end
 
   #now we create photos and commonts
