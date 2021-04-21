@@ -28,9 +28,26 @@ task sample_data: :environment do
          # u.blahblahyougetmypoint
       # end
 
-    
-   
-   p u.errors.full_messages
+  
+  end
+
+
+  users = User.all
+
+  users.each |first_user| do
+
+
+    users.each |second_user| do
+        if rand <0.75
+            first_user.sent_follow_requests.create(
+              recipient: second_user,
+              status: ["pending","accepted","rejected"].sample
+            )
+        end
+
+    end
+
+
   end
  
    ending = Time.now
