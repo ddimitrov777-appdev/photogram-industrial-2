@@ -26,4 +26,6 @@ task sample_data: :environment do
   end
  p "#{User.count} users have been created."
 
+ p User.where(id: 1).username
+
 end
