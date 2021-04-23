@@ -9,8 +9,13 @@ task sample_data: :environment do
   Photo.delete_all
   User.delete_all
 
-  usernames = Array.new{ Faker::Name.first_name }
+  usernames = []
+  10.times do
+    usernames << Faker::Name.first_name
+  end
+  
 
+  
   usernames << "alice"
 
   usernames << "bob"
