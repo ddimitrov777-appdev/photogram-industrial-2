@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   resources :follow_requests
   resources :likes
   resources :photos
-  resources :users, show: :only
+  #resources :users, show: :only
+  
   
   
   get ":username" => "users#show", as: :user
+  
   get ":username/liked" => "users#liked", as: :liked
   get ":username/feed" => "users#feed", as: :feed
   get ":username/discover" => "users#discover", as: :discover
